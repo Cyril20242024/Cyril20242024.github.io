@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的GitHub个人主页</title>
+    <title>杨同学 - 学术主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2d3436;
-            --secondary-color: #0984e3;
-            --accent-color: #00b894;
-            --text-color: #2d3436;
-            --light-bg: #f9f9f9;
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #2980b9;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
             --white: #ffffff;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
@@ -21,11 +22,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
 
         body {
-            background-color: var(--light-bg);
+            background-color: #f8f9fa;
             color: var(--text-color);
             line-height: 1.6;
         }
@@ -55,7 +56,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         .nav-links {
@@ -72,10 +73,26 @@
             color: var(--primary-color);
             font-weight: 500;
             transition: var(--transition);
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .menu-toggle {
@@ -87,8 +104,9 @@
         /* 英雄区域样式 */
         .hero {
             padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: var(--white);
             text-align: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
         .hero-content {
@@ -97,26 +115,31 @@
         }
 
         .avatar {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--white);
             box-shadow: var(--shadow);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 15px;
-            color: var(--primary-color);
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .hero .title {
+            font-size: 1.5rem;
             margin-bottom: 30px;
-            color: var(--primary-color);
-            opacity: 0.8;
+            color: var(--light-color);
         }
 
         .btn {
@@ -130,15 +153,26 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            margin: 10px;
         }
 
         .btn:hover {
             background-color: var(--accent-color);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* 关于区域样式 */
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* 章节样式 */
         .section {
             padding: 80px 0;
         }
@@ -162,63 +196,81 @@
             background-color: var(--secondary-color);
         }
 
-        .about-content {
+        /* 教育背景样式 */
+        .education-content {
             display: flex;
             align-items: center;
             gap: 50px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
 
-        .about-text {
+        .education-logo {
+            flex: 0 0 150px;
+            text-align: center;
+        }
+
+        .nju-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+
+        .education-details {
             flex: 1;
         }
 
-        .about-text h3 {
+        .education-details h3 {
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--primary-color);
         }
 
-        .about-text p {
+        .education-details .degree {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .education-details .duration {
+            font-size: 1.1rem;
             margin-bottom: 20px;
+            color: var(--dark-color);
         }
 
-        .skills {
-            flex: 1;
-        }
-
-        .skill-item {
-            margin-bottom: 20px;
-        }
-
-        .skill-name {
+        .courses {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
         }
 
-        .skill-bar {
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
+        .course-tag {
+            padding: 5px 12px;
+            background-color: var(--light-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
 
-        .skill-progress {
-            height: 100%;
-            background-color: var(--secondary-color);
-            border-radius: 5px;
-            width: 0;
-            transition: width 1.5s ease;
-        }
-
-        /* 项目区域样式 */
-        .projects {
+        /* 研究项目样式 */
+        .research {
             background-color: var(--white);
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         }
 
@@ -228,6 +280,7 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border-top: 4px solid var(--secondary-color);
         }
 
         .project-card:hover {
@@ -235,40 +288,140 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .project-content {
+            padding: 25px;
         }
 
-        .project-content {
-            padding: 20px;
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
 
         .project-title {
             font-size: 1.4rem;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: var(--primary-color);
+        }
+
+        .project-role {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .project-duration {
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            padding: 3px 10px;
+            border-radius: 15px;
         }
 
         .project-description {
             margin-bottom: 15px;
-            color: #666;
+            color: #555;
+        }
+
+        .project-highlights {
+            margin-bottom: 15px;
+        }
+
+        .project-highlights li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .project-highlights li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 15px;
         }
 
         .tag {
-            padding: 5px 10px;
-            background-color: #e9ecef;
+            padding: 5px 12px;
+            background-color: var(--light-color);
             border-radius: 20px;
-            font-size: 0.8rem;
-            color: #495057;
+            font-size: 0.85rem;
+            color: var(--dark-color);
+        }
+
+        /* 技能与获奖样式 */
+        .skills-awards {
+            display: flex;
+            gap: 40px;
+        }
+
+        .skills, .awards {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .skills h3, .awards h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            padding: 6px 12px;
+            background-color: var(--light-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .award-list {
+            list-style: none;
+        }
+
+        .award-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .award-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .award-desc {
+            font-size: 0.9rem;
+            color: #666;
         }
 
         /* 联系区域样式 */
@@ -300,6 +453,12 @@
             font-size: 1.2rem;
         }
 
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
         .contact-form {
             flex: 1;
         }
@@ -320,7 +479,7 @@
         .form-control:focus {
             border-color: var(--secondary-color);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(9, 132, 227, 0.2);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
 
         textarea.form-control {
@@ -381,8 +540,12 @@
 
         /* 响应式设计 */
         @media (max-width: 992px) {
-            .about-content, .contact-content {
+            .education-content, .contact-content, .skills-awards {
                 flex-direction: column;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -414,7 +577,11 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+            
+            .hero .title {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -424,11 +591,12 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">DevPortfolio</div>
+                <div class="logo">Yang's Portfolio</div>
                 <ul class="nav-links">
                     <li><a href="#home">首页</a></li>
-                    <li><a href="#about">关于我</a></li>
-                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#education">教育背景</a></li>
+                    <li><a href="#research">研究项目</a></li>
+                    <li><a href="#skills">技能与获奖</a></li>
                     <li><a href="#contact">联系我</a></li>
                 </ul>
                 <div class="menu-toggle">
@@ -442,159 +610,260 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <img src="https://via.placeholder.com/150" alt="头像" class="avatar">
-                <h1>你好，我是张三</h1>
-                <p>一名全栈开发工程师，专注于创建高效、优雅的Web解决方案</p>
-                <a href="#projects" class="btn">查看我的项目</a>
+                <!-- 请替换为您的照片路径 -->
+                <img src="cemian.jpg" alt="杨周宇霄" class="avatar">
+                <h1>杨周宇霄</h1>
+                <p class="title">南京大学计算机科学与技术系直博研究生</p>
+                <p>研究方向：计算机视觉、3D对象分析与生成、深度学习</p>
+                <div>
+                    <a href="#research" class="btn">查看我的研究</a>
+                    <a href="#contact" class="btn btn-outline">联系我</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 关于我区域 -->
-    <section class="section" id="about">
+    <!-- 教育背景 -->
+    <section class="section" id="education">
         <div class="container">
-            <h2 class="section-title">关于我</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>探索数字世界的创造者</h3>
-                    <p>我是一名充满激情的开发者，拥有5年全栈开发经验。我热爱解决复杂问题，并致力于创建既美观又实用的数字产品。</p>
-                    <p>在我的职业生涯中，我参与了多个大型项目，从前端用户界面到后端系统架构都有深入的理解和实践。</p>
-                    <p>当我不在编码时，我喜欢阅读技术博客、参加开发者社区活动，以及探索新的技术趋势。</p>
-                    <a href="#contact" class="btn">联系我</a>
+            <h2 class="section-title">教育背景</h2>
+            <div class="education-content">
+                <div class="education-logo">
+                    <div class="nju-logo">南京大学</div>
                 </div>
-                <div class="skills">
-                    <h3>我的技能</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>HTML/CSS</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>JavaScript</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>React</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Node.js</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="75"></div>
-                        </div>
+                <div class="education-details">
+                    <h3>南京大学</h3>
+                    <p class="degree">计算机科学与技术学院2026级直博研究生</p>
+                    <p class="duration">2022年9月 - 至今</p>
+                    <p>就读于南京大学匡亚明学院（大理科人才培养基地），已获得直博资格。研究方向主要集中在计算机视觉、3D对象分析与生成、深度学习等领域。</p>
+                    <div class="courses">
+                        <span class="course-tag">神经网络</span>
+                        <span class="course-tag">操作系统</span>
+                        <span class="course-tag">人工智能导论</span>
+                        <span class="course-tag">计算机图形学</span>
+                        <span class="course-tag">矩阵计算</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 项目区域 -->
-    <section class="section projects" id="projects">
+    <!-- 研究项目 -->
+    <section class="section research" id="research">
         <div class="container">
-            <h2 class="section-title">我的项目</h2>
+            <h2 class="section-title">研究项目</h2>
             <div class="project-grid">
+                <!-- 项目1 -->
                 <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200" alt="项目1" class="project-img">
                     <div class="project-content">
-                        <h3 class="project-title">电子商务平台</h3>
-                        <p class="project-description">一个完整的全栈电子商务解决方案，包含用户认证、产品管理和支付集成。</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">面向3D对象分析与生成的深度学习理论与方法研究</h3>
+                                <p class="project-role">国家自然科学基金重点项目 · 成员</p>
+                            </div>
+                            <span class="project-duration">2024.05-2025.03</span>
                         </div>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200" alt="项目2" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">任务管理应用</h3>
-                        <p class="project-description">一个直观的任务管理工具，支持团队协作、进度跟踪和提醒功能。</p>
+                        <p class="project-description">参与国家自然科学基金重点项目，研究3D对象分析与生成的深度学习理论与方法。</p>
+                        <ul class="project-highlights">
+                            <li>自学计算机图形学、矩阵计算等相关知识，掌握Game101课程内容</li>
+                            <li>阅读并复现SFM、colmap代码分析、多视点三维重建相关深度学习算法</li>
+                            <li>提出通过旋转微小空间角度优化管道拟合的新方法，效果超越传统方法</li>
+                        </ul>
                         <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">PWA</span>
-                        </div>
-                        <a href="#" class="btn">查看详情</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/400x200" alt="项目3" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">数据分析仪表板</h3>
-                        <p class="project-description">一个交互式数据可视化平台，帮助用户理解和分析复杂数据集。</p>
-                        <div class="project-tags">
-                            <span class="tag">D3.js</span>
+                            <span class="tag">深度学习</span>
+                            <span class="tag">3D重建</span>
+                            <span class="tag">计算机视觉</span>
                             <span class="tag">Python</span>
-                            <span class="tag">Flask</span>
+                            <span class="tag">PyTorch</span>
                         </div>
-                        <a href="#" class="btn">查看详情</a>
+                    </div>
+                </div>
+
+                <!-- 项目2 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">面向材质纹理识别的高性能网络模型探索</h3>
+                                <p class="project-role">国家级大创项目 · 核心成员</p>
+                            </div>
+                            <span class="project-duration">2023.09-2024.10</span>
+                        </div>
+                        <p class="project-description">参与国家级大学生创新创业训练计划项目，探索面向材质纹理识别的高性能网络模型。</p>
+                        <ul class="project-highlights">
+                            <li>自学机器学习、神经网络、深度学习相关知识，熟练使用PyTorch框架</li>
+                            <li>实验搭建CNN网络进行纹理测试（AlexNet, ResNet, GoogleNet, VGG）</li>
+                            <li>探索并搭建第三代神经网络——脉冲神经网络(SNN)，研究图像编解码方式</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">材质识别</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">SNN</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">机器学习</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目3 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">基于半监督学习的高极生物图像语义分割</h3>
+                                <p class="project-role">个人项目 · 负责人</p>
+                            </div>
+                            <span class="project-duration">2025.01-2025.02</span>
+                        </div>
+                        <p class="project-description">独立负责基于半监督学习的高极生物图像语义分割项目。</p>
+                        <ul class="project-highlights">
+                            <li>标记制作高极生物语义分割测试集</li>
+                            <li>搭建U-Net+半监督机制的神经网络进行语义分割</li>
+                            <li>取得了大于90%的像素准确率，精确识别生物与环境区别</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">语义分割</span>
+                            <span class="tag">半监督学习</span>
+                            <span class="tag">U-Net</span>
+                            <span class="tag">生物图像</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目4 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">其他研究项目</h3>
+                                <p class="project-role">个人项目 · 负责人</p>
+                            </div>
+                            <span class="project-duration">2023.02-2025.02</span>
+                        </div>
+                        <p class="project-description">多个个人研究项目的探索与实践。</p>
+                        <ul class="project-highlights">
+                            <li>使用WGAN-GP网络实现类内存储立体生成</li>
+                            <li>Vision Transformer网络的复现及在相机位姿估计中的应用</li>
+                            <li>贪吃蛇游戏实现与自动寻路算法实现</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">生成对抗网络</span>
+                            <span class="tag">Vision Transformer</span>
+                            <span class="tag">位姿估计</span>
+                            <span class="tag">算法实现</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 联系我区域 -->
+    <!-- 技能与获奖 -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">技能与获奖</h2>
+            <div class="skills-awards">
+                <div class="skills">
+                    <h3>技能专长</h3>
+                    <div class="skill-category">
+                        <h4>编程语言</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">C/C++</span>
+                            <span class="skill-item">Java</span>
+                            <span class="skill-item">MATLAB</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>框架与工具</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">COLMAP</span>
+                            <span class="skill-item">Linux</span>
+                            <span class="skill-item">办公软件</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>研究领域</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">计算机视觉</span>
+                            <span class="skill-item">深度学习</span>
+                            <span class="skill-item">3D重建</span>
+                            <span class="skill-item">语义分割</span>
+                            <span class="skill-item">神经网络</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>语言能力</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">英语 CET-4 (566)</span>
+                            <span class="skill-item">英语 CET-6 (536)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="awards">
+                    <h3>获奖情况</h3>
+                    <ul class="award-list">
+                        <li class="award-item">
+                            <div class="award-name">基础学科奖学金</div>
+                            <div class="award-desc">2023-2024学年</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">人民奖学金</div>
+                            <div class="award-desc">2022-2023、2023-2024学年，校级奖学金</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">匡亚明学院年度学业进步奖</div>
+                            <div class="award-desc">2023-2024、2024-2025学年</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">"睿智女孩"志愿活动优秀作品奖</div>
+                            <div class="award-desc">2023-2024学年</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">南京云锦博物馆志愿者证书</div>
+                            <div class="award-desc">2023-2024学年</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
     <section class="section" id="contact">
         <div class="container">
             <h2 class="section-title">联系我</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>获取联系</h3>
-                    <p>如果您有任何问题或合作机会，请随时与我联系。我期待与您交流！</p>
+                    <p>如果您对我的研究感兴趣或有合作机会，欢迎随时与我联系！</p>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h4>邮箱</h4>
-                            <p>zhangsan@example.com</p>
+                            <p>221240089@smail.nju.edu.cn</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h4>电话</h4>
-                            <p>+86 138 0000 0000</p>
+                            <p>+86 182 6194 3956 </p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div>
+                        <div class="contact-details">
                             <h4>地址</h4>
-                            <p>北京市朝阳区</p>
+                            <p>南京大学计算机科学与技术学院</p>
                         </div>
                     </div>
                 </div>
@@ -625,8 +894,8 @@
         <div class="container">
             <div class="footer-content">
                 <div>
-                    <div class="footer-logo">DevPortfolio</div>
-                    <p>创造精彩的数字体验</p>
+                    <div class="footer-logo">Yang's Portfolio</div>
+                    <p>探索计算机视觉与深度学习的无限可能</p>
                 </div>
                 <div class="social-links">
                     <a href="#" class="social-link"><i class="fab fa-github"></i></a>
@@ -636,7 +905,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 张三. 保留所有权利.</p>
+                <p>&copy; 2025 杨周宇霄. 保留所有权利.</p>
             </div>
         </div>
     </footer>
@@ -669,33 +938,6 @@
             });
         });
 
-        // 技能条动画
-        function animateSkills() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width + '%';
-            });
-        }
-
-        // 当技能区域进入视口时触发动画
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    animateSkills();
-                }
-            });
-        }, observerOptions);
-
-        const skillsSection = document.querySelector('.skills');
-        if(skillsSection) {
-            observer.observe(skillsSection);
-        }
-
         // 表单提交处理
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -711,6 +953,28 @@
             } else {
                 header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
             }
+        });
+
+        // 项目卡片动画
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 初始化项目卡片样式和观察
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
         });
     </script>
 </body>
