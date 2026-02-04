@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨同学 - 学术主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #2980b9;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏样式 */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 英雄区域样式 */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .hero .title {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--light-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* 章节样式 */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        /* 教育背景样式 */
+        .education-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .education-logo {
+            flex: 0 0 150px;
+            text-align: center;
+        }
+
+        .nju-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+
+        .education-details {
+            flex: 1;
+        }
+
+        .education-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .education-details .degree {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .education-details .duration {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .course-tag {
+            padding: 5px 12px;
+            background-color: var(--light-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 研究项目样式 */
+        .research {
+            background-color: var(--white);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .project-role {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .project-duration {
+            font-size: 0.9rem;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+
+        .project-description {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .project-highlights {
+            margin-bottom: 15px;
+        }
+
+        .project-highlights li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .project-highlights li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            background-color: var(--light-color);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--dark-color);
+        }
+
+        /* 技能与获奖样式 */
+        .skills-awards {
+            display: flex;
+            gap: 40px;
+        }
+
+        .skills, .awards {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .skills h3, .awards h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            padding: 6px 12px;
+            background-color: var(--light-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .award-list {
+            list-style: none;
+        }
+
+        .award-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .award-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .award-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* 联系区域样式 */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* =========================
+           游戏区域样式
+           ========================= */
+        .game-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+        }
+
+        .game-section .section-title {
+            color: var(--white);
+        }
+
+        .game-section .section-title::after {
+            background-color: #ffd700;
+        }
+
+        .game-container {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 左侧角色面板 */
+        .character-panel {
+            flex: 0 0 350px;
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .character-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .character-title {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #764ba2;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .character-level {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .exp-bar-container {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            height: 30px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .exp-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .exp-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        /* 右侧操作面板 */
+        .action-panel {
+            flex: 1;
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-section {
+            margin-bottom: 30px;
+        }
+
+        .action-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+        }
+
+        .task-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .task-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid var(--light-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .task-input:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .game-btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .game-btn:active {
+            transform: translateY(0);
+        }
+
+        .game-btn-large {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .battle-log {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .battle-log p {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .battle-log .damage {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .battle-log .victory {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .battle-log .defeat {
+            color: #e67e22;
+            font-weight: 600;
+        }
+
+        /* 通知提示 */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            font-size: 1.1rem;
+            font-weight: 600;
+            z-index: 1000;
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+            opacity: 0;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .education-content, .contact-content, .skills-awards, .game-container {
+                flex-direction: column;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .character-panel {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero .title {
+                font-size: 1.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Yang's Portfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#education">教育背景</a></li>
+                    <li><a href="#research">研究项目</a></li>
+                    <li><a href="#skills">技能与获奖</a></li>
+                    <li><a href="#game">学习游戏</a></li>
+                    <li><a href="#contact">联系我</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <!-- 请替换为您的照片路径 -->
+                <img src="cemian.jpg" alt="杨周宇霄" class="avatar">
+                <h1>杨周宇霄</h1>
+                <p class="title">南京大学计算机科学与技术系直博研究生</p>
+                <p>研究方向：计算机视觉、3D对象分析与生成、深度学习</p>
+                <div>
+                    <a href="#research" class="btn">查看我的研究</a>
+                    <a href="#contact" class="btn btn-outline">联系我</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section class="section" id="education">
+        <div class="container">
+            <h2 class="section-title">教育背景</h2>
+            <div class="education-content">
+                <div class="education-logo">
+                    <div class="nju-logo">南京大学</div>
+                </div>
+                <div class="education-details">
+                    <h3>南京大学</h3>
+                    <p class="degree">计算机科学与技术学院2026级直博研究生</p>
+                    <p class="duration">2022年9月 - 至今</p>
+                    <p>就读于南京大学匡亚明学院（大理科人才培养基地），已获得直博资格。研究方向主要集中在计算机视觉、3D对象分析与生成、深度学习等领域。</p>
+                    <div class="courses">
+                        <span class="course-tag">神经网络</span>
+                        <span class="course-tag">操作系统</span>
+                        <span class="course-tag">人工智能导论</span>
+                        <span class="course-tag">计算机图形学</span>
+                        <span class="course-tag">矩阵计算</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究项目 -->
+    <section class="section research" id="research">
+        <div class="container">
+            <h2 class="section-title">研究项目</h2>
+            <div class="project-grid">
+                <!-- 项目1 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">面向3D对象分析与生成的深度学习理论与方法研究</h3>
+                                <p class="project-role">国家自然科学基金重点项目 · 成员</p>
+                            </div>
+                            <span class="project-duration">2024.05-2025.03</span>
+                        </div>
+                        <p class="project-description">参与国家自然科学基金重点项目，研究3D对象分析与生成的深度学习理论与方法。</p>
+                        <ul class="project-highlights">
+                            <li>自学计算机图形学、矩阵计算等相关知识，掌握Game101课程内容</li>
+                            <li>阅读并复现SFM、colmap代码分析、多视点三维重建相关深度学习算法</li>
+                            <li>提出通过旋转微小空间角度优化管道拟合的新方法，效果超越传统方法</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">深度学习</span>
+                            <span class="tag">3D重建</span>
+                            <span class="tag">计算机视觉</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目2 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">面向材质纹理识别的高性能网络模型探索</h3>
+                                <p class="project-role">国家级大创项目 · 核心成员</p>
+                            </div>
+                            <span class="project-duration">2023.09-2024.10</span>
+                        </div>
+                        <p class="project-description">参与国家级大学生创新创业训练计划项目，探索面向材质纹理识别的高性能网络模型。</p>
+                        <ul class="project-highlights">
+                            <li>自学机器学习、神经网络、深度学习相关知识，熟练使用PyTorch框架</li>
+                            <li>实验搭建CNN网络进行纹理测试（AlexNet, ResNet, GoogleNet, VGG）</li>
+                            <li>探索并搭建第三代神经网络——脉冲神经网络(SNN)，研究图像编解码方式</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">材质识别</span>
+                            <span class="tag">CNN</span>
+                            <span class="tag">SNN</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">机器学习</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目3 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">基于半监督学习的高极生物图像语义分割</h3>
+                                <p class="project-role">个人项目 · 负责人</p>
+                            </div>
+                            <span class="project-duration">2025.01-2025.02</span>
+                        </div>
+                        <p class="project-description">独立负责基于半监督学习的高极生物图像语义分割项目。</p>
+                        <ul class="project-highlights">
+                            <li>标记制作高极生物语义分割测试集</li>
+                            <li>搭建U-Net+半监督机制的神经网络进行语义分割</li>
+                            <li>取得了大于90%的像素准确率，精确识别生物与环境区别</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">语义分割</span>
+                            <span class="tag">半监督学习</span>
+                            <span class="tag">U-Net</span>
+                            <span class="tag">生物图像</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目4 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">其他研究项目</h3>
+                                <p class="project-role">个人项目 · 负责人</p>
+                            </div>
+                            <span class="project-duration">2023.02-2025.02</span>
+                        </div>
+                        <p class="project-description">多个个人研究项目的探索与实践。</p>
+                        <ul class="project-highlights">
+                            <li>使用WGAN-GP网络实现类内存储立体生成</li>
+                            <li>Vision Transformer网络的复现及在相机位姿估计中的应用</li>
+                            <li>贪吃蛇游戏实现与自动寻路算法实现</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">生成对抗网络</span>
+                            <span class="tag">Vision Transformer</span>
+                            <span class="tag">位姿估计</span>
+                            <span class="tag">算法实现</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能与获奖 -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">技能与获奖</h2>
+            <div class="skills-awards">
+                <div class="skills">
+                    <h3>技能专长</h3>
+                    <div class="skill-category">
+                        <h4>编程语言</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">C/C++</span>
+                            <span class="skill-item">Java</span>
+                            <span class="skill-item">MATLAB</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>框架与工具</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">COLMAP</span>
+                            <span class="skill-item">Linux</span>
+                            <span class="skill-item">办公软件</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>研究领域</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">计算机视觉</span>
+                            <span class="skill-item">深度学习</span>
+                            <span class="skill-item">3D重建</span>
+                            <span class="skill-item">语义分割</span>
+                            <span class="skill-item">神经网络</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>语言能力</h4>
+                        <div class="skill-items">
+                            <span class="skill-item">英语 CET-4 (566)</span>
+                            <span class="skill-item">英语 CET-6 (536)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="awards">
+                    <h3>获奖情况</h3>
+                    <ul class="award-list">
+                        <li class="award-item">
+                            <div class="award-name">基础学科奖学金</div>
+                            <div class="award-desc">2023-2024学年</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">人民奖学金</div>
+                            <div class="award-desc">2022-2023、2023-2024学年，校级奖学金</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">匡亚明学院年度学业进步奖</div>
+                            <div class="award-desc">2023-2024、2024-2025学年</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">"睿智女孩"志愿活动优秀作品奖</div>
+                            <div class="award-desc">2023-2024学年</div>
+                        </li>
+                        <li class="award-item">
+                            <div class="award-name">南京云锦博物馆志愿者证书</div>
+                            <div class="award-desc">2023-2024学年</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 学习督促游戏 -->
+    <section class="game-section" id="game">
+        <div class="container">
+            <h2 class="section-title">🎮 学习成长游戏</h2>
+            <div class="game-container">
+                <!-- 左侧：角色面板 -->
+                <div class="character-panel">
+                    <div class="character-avatar">⚔️</div>
+                    <div class="character-title" id="characterTitle">新手学徒</div>
+                    <div class="character-level">等级 <span id="levelDisplay">1</span></div>
+                    
+                    <!-- 经验条 -->
+                    <div class="exp-bar-container">
+                        <div class="exp-bar" id="expBar">
+                            <span id="expBarText">0 / 100</span>
+                        </div>
+                    </div>
+                    <div class="exp-text" id="expText">经验值: 0 / 100</div>
+                    
+                    <!-- 角色属性 -->
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">⚔️ 攻击力</div>
+                            <div class="stat-value" id="atkDisplay">10</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">❤️ 生命值</div>
+                            <div class="stat-value" id="hpDisplay">100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：操作面板 -->
+                <div class="action-panel">
+                    <!-- 任务完成区域 -->
+                    <div class="action-section">
+                        <h3>📝 完成任务</h3>
+                        <div class="task-input-group">
+                            <input type="text" id="taskInput" class="task-input" placeholder="输入你完成的任务...">
+                            <button class="game-btn" onclick="completeTask()">完成任务</button>
+                        </div>
+                        <p style="color: #666; font-size: 0.9rem;">每完成一个任务获得 20 经验值</p>
+                    </div>
+
+                    <!-- 战斗区域 -->
+                    <div class="action-section">
+                        <h3>⚔️ 挑战怪物</h3>
+                        <button class="game-btn game-btn-large" onclick="challengeMonster()">开始战斗</button>
+                        <div class="battle-log" id="battleLog">
+                            <p style="color: #999;">战斗记录将在这里显示...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>获取联系</h3>
+                    <p>如果您对我的研究感兴趣或有合作机会，欢迎随时与我联系！</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>邮箱</h4>
+                            <p>221240089@smail.nju.edu.cn</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>电话</h4>
+                            <p>+86 182 6194 3956 </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>地址</h4>
+                            <p>南京大学计算机科学与技术学院</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>发送消息</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="主题" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="您的消息" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Yang's Portfolio</div>
+                    <p>探索计算机视觉与深度学习的无限可能</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 杨周宇霄. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===========================
+        // 原有页面的JavaScript代码
+        // ===========================
+        
+        // 导航菜单切换
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 移动端点击后关闭菜单
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('.nav-links').classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // 表单提交处理
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的消息！我会尽快回复您。');
+            this.reset();
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // 项目卡片动画
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 初始化项目卡片样式和观察
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+
+        // ===========================
+        // 游戏系统JavaScript代码
+        // ===========================
+        
+        // 游戏数据结构
+        let gameData = {
+            level: 1,           // 玩家等级
+            exp: 0,             // 当前经验值
+            expToNext: 100,     // 升级所需经验
+            atk: 10,            // 攻击力
+            hp: 100,            // 生命值
+            maxHp: 100          // 最大生命值
+        };
+
+        // 称号系统
+        const titles = [
+            { minLevel: 1, maxLevel: 3, title: '新手学徒' },
+            { minLevel: 4, maxLevel: 6, title: '自律战士' },
+            { minLevel: 7, maxLevel: 10, title: '时间管理大师' },
+            { minLevel: 11, maxLevel: 15, title: '学霸之星' },
+            { minLevel: 16, maxLevel: 20, title: '知识巨匠' },
+            { minLevel: 21, maxLevel: 999, title: '传奇学者' }
+        ];
+
+        // 初始化游戏
+        function initGame() {
+            // 从localStorage加载数据
+            const savedData = localStorage.getItem('learningGameData');
+            if (savedData) {
+                gameData = JSON.parse(savedData);
+            }
+            updateUI();
+        }
+
+        // 保存游戏数据到localStorage
+        function saveGame() {
+            localStorage.setItem('learningGameData', JSON.stringify(gameData));
+        }
+
+        // 更新UI显示
+        function updateUI() {
+            // 更新等级
+            document.getElementById('levelDisplay').textContent = gameData.level;
+            
+            // 更新称号
+            const currentTitle = getTitleByLevel(gameData.level);
+            document.getElementById('characterTitle').textContent = currentTitle;
+            
+            // 更新经验条
+            const expPercent = (gameData.exp / gameData.expToNext) * 100;
+            document.getElementById('expBar').style.width = expPercent + '%';
+            document.getElementById('expBarText').textContent = `${gameData.exp} / ${gameData.expToNext}`;
+            document.getElementById('expText').textContent = `经验值: ${gameData.exp} / ${gameData.expToNext}`;
+            
+            // 更新属性
+            document.getElementById('atkDisplay').textContent = gameData.atk;
+            document.getElementById('hpDisplay').textContent = gameData.hp;
+        }
+
+        // 根据等级获取称号
+        function getTitleByLevel(level) {
+            for (let titleData of titles) {
+                if (level >= titleData.minLevel && level <= titleData.maxLevel) {
+                    return titleData.title;
+                }
+            }
+            return '传奇学者';
+        }
+
+        // 显示通知
+        function showNotification(message) {
+            // 移除已存在的通知
+            const existing = document.querySelector('.notification');
+            if (existing) {
+                existing.remove();
+            }
+            
+            // 创建新通知
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // 3秒后移除
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // 完成任务
+        function completeTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskName = taskInput.value.trim();
+            
+            if (!taskName) {
+                showNotification('❌ 请输入任务名称！');
+                return;
+            }
+            
+            // 获得经验
+            const expGain = 20;
+            gameData.exp += expGain;
+            
+            // 检查是否升级
+            if (gameData.exp >= gameData.expToNext) {
+                levelUp();
+            }
+            
+            // 显示反馈
+            showNotification(`✅ 完成任务「${taskName}」，获得 ${expGain} 经验！`);
+            
+            // 清空输入框
+            taskInput.value = '';
+            
+            // 更新UI和保存
+            updateUI();
+            saveGame();
+        }
+
+        // 升级
+        function levelUp() {
+            gameData.level += 1;
+            gameData.exp = gameData.exp - gameData.expToNext;
+            
+            // 计算新的属性
+            gameData.expToNext = Math.floor(100 * Math.pow(1.2, gameData.level - 1));
+            gameData.atk = 10 + (gameData.level - 1) * 5;
+            gameData.maxHp = 100 + (gameData.level - 1) * 20;
+            gameData.hp = gameData.maxHp;
+            
+            // 显示升级通知
+            const newTitle = getTitleByLevel(gameData.level);
+            showNotification(`🎉 升级了！等级 ${gameData.level} - ${newTitle}`);
+        }
+
+        // 挑战怪物
+        function challengeMonster() {
+            // 清空战斗记录
+            const battleLog = document.getElementById('battleLog');
+            battleLog.innerHTML = '';
+            
+            // 生成怪物
+            const monster = {
+                name: `Lv${gameData.level} 怪物`,
+                hp: 50 + gameData.level * 30,
+                maxHp: 50 + gameData.level * 30,
+                atk: 5 + gameData.level * 3
+            };
+            
+            addBattleLog(`遭遇了 ${monster.name}！`);
+            addBattleLog(`怪物生命值: ${monster.hp}`);
+            addBattleLog('---');
+            
+            // 战斗循环
+            let playerHp = gameData.hp;
+            let monsterHp = monster.hp;
+            let turn = 0;
+            
+            while (playerHp > 0 && monsterHp > 0) {
+                turn++;
+                
+                // 玩家攻击
+                const playerDamage = gameData.atk + Math.floor(Math.random() * 10);
+                monsterHp -= playerDamage;
+                addBattleLog(`回合 ${turn}: 你造成了 <span class="damage">${playerDamage}</span> 点伤害`);
+                
+                if (monsterHp <= 0) break;
+                
+                // 怪物攻击
+                const monsterDamage = monster.atk + Math.floor(Math.random() * 5);
+                playerHp -= monsterDamage;
+                addBattleLog(`${monster.name} 造成了 <span class="damage">${monsterDamage}</span> 点伤害`);
+                addBattleLog('---');
+            }
+            
+            // 判断胜负
+            if (playerHp > 0) {
+                const expReward = 30 + gameData.level * 10;
+                gameData.exp += expReward;
+                gameData.hp = playerHp;
+                
+                addBattleLog(`<span class="victory">⚔️ 战斗胜利！</span>`);
+                addBattleLog(`获得 ${expReward} 经验值`);
+                
+                // 检查升级
+                if (gameData.exp >= gameData.expToNext) {
+                    levelUp();
+                }
+                
+                showNotification(`🏆 战斗胜利！获得 ${expReward} 经验`);
+            } else {
+                gameData.hp = Math.floor(gameData.maxHp * 0.5);
+                addBattleLog(`<span class="defeat">💀 战斗失败...</span>`);
+                addBattleLog('生命恢复至50%');
+                showNotification('💀 战斗失败，继续努力！');
+            }
+            
+            // 更新UI和保存
+            updateUI();
+            saveGame();
+        }
+
+        // 添加战斗日志
+        function addBattleLog(message) {
+            const battleLog = document.getElementById('battleLog');
+            const p = document.createElement('p');
+            p.innerHTML = message;
+            battleLog.appendChild(p);
+            battleLog.scrollTop = battleLog.scrollHeight;
+        }
+
+        // 支持回车键完成任务
+        document.getElementById('taskInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                completeTask();
+            }
+        });
+
+        // 页面加载时初始化游戏
+        window.addEventListener('load', function() {
+            initGame();
+        });
+    </script>
+</body>
+</html>
